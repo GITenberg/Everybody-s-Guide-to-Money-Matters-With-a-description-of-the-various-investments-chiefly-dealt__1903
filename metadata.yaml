@@ -1,0 +1,25 @@
+_repo: Everybody-s-Guide-to-Money-Matters-With-a-description-of-the-various-investments-chiefly-dealt__1903
+creator:
+  author:
+    agent_name: Cotton, William, F.S.A., of Exeter
+    alias: Cotton, William
+    gutenberg_agent_id: '745'
+    url: http://www.gutenberg.org/2009/agents/745
+description: '1898'
+gutenberg_issued: '1999-09-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '1903'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Stock exchanges -- Great Britain'
+- !lcsh 'Banks and banking -- Great Britain'
+- !lcsh 'Money'
+- !lcc 'HG'
+- !lcsh 'Investments -- Great Britain'
+title: "Everybody's Guide to Money Matters\r\nWith a description of the various investments\
+  \ chiefly dealt in on the stock exchange, and the mode of dealing therein"
+url: http://www.gutenberg.org/ebooks/1903
