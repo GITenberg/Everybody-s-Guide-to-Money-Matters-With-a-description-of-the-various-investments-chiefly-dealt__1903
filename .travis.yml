@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: EPYH0jD/EnMnqpmcIwx7td/+eA72x2Py7vaD3aVLi5bOC+hRuaECDOw47n8W7BCHk9q55t0HBJ9PiJVgxjTnVLJyOY9Y75lEpIOhsLioT6JxeKlggdCrv+mCcV7O3BrT+bl7AjgVyhvtJmTZXjsGfHEnBDAqrxiABFOL3agvzBSy+sANq1WgaMQjg6B4wmeOu+5pTNNyCRCIDcqA93MErXNSnXaVunesb+qqb5sGp7xhpPg/Djt5H2vrE9nfsTzg/B8+eNzFTJB1cU+tUalWi1rmgzXu6G2ocxgBLW8subbv9T+4UYT3w6Cliq3O6+BHJ402vXMRjiOQcKtZJQXYWgEz05gSYjXdP4mfHNIY59Ao2rjYU1FfyJx/Yw4BiZCQDnI8NyaBU6KuWVPWV6ku30aeZ2Eyi9IzwhRPdR7EdR/OBi9M95vgFpsU73UZiJhe7qPkNYBWqqZ0sKyXODfXo39kQOBmp65SsnoMo+wYBnAxVJwiIt1QTQUl7rUmKFh7ONRHntEhZXpV+D+REbwhxWS4iFsAL2Y/kO6FyJK+Y93Eq/ZO+Ee3l5lwFmLmVnfvmnD5Bx66Ix5CMmJEVVPuwnW23M/i1bBt97I4DkbmaXlH8+iC3P+DPYk8DWoUocZ53DO2xLWjgsqLiF+pL6u45RFJFoB9ZQ6yC16qDLWyMu8=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/Everybody-s-Guide-to-Money-Matters-With-a-description-of-the-various-investments-chiefly-dealt__1903
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
