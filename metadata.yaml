@@ -1,5 +1,8 @@
 _repo: Everybody-s-Guide-to-Money-Matters-With-a-description-of-the-various-investments-chiefly-dealt__1903
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: Cotton, William, F.S.A., of Exeter
@@ -7,6 +10,8 @@ creator:
     gutenberg_agent_id: '745'
     url: http://www.gutenberg.org/2009/agents/745
 description: '1898'
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/1903#Everybody-s-Guide-to-Money-Matters-With-a-description-of-the-various-investments-chiefly-dealt_
 gutenberg_issued: '1999-09-01'
 gutenberg_type: Text
 identifiers:
